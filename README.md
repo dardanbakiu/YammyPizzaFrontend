@@ -11,3 +11,6 @@ an application where you can order pizzas.
 
 This repository is hosted on Heroku via the following link: https://secure-shore-05604.herokuapp.com/
 and is baked by the back-end application hosted on: https://dry-oasis-95076.herokuapp.com/
+
+Front-end Repository on Github: https://github.com/dardanbakiu/YammyPizzaFrontend 
+Back-end Repository on Github: https://github.com/dardanbakiu/YammyPizzaBackend
