@@ -1,0 +1,11 @@
+.about {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 125%;
+    margin: 0 3%;
+}
+
+.aboutImg{
+    margin:0 auto;
+    width:10%;
+}
