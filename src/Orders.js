@@ -14,7 +14,7 @@ class Orders extends Component {
     
 
     componentDidMount() {
-        const host = 'http://dry-oasis-95076.herokuapp.com/api'
+        const host = 'https://dry-oasis-95076.herokuapp.com/api'
 
         axios.get(`${host}/data`)
             .then(res => {
@@ -27,7 +27,7 @@ class Orders extends Component {
     prevState = this.state.data;
 
     componentDidUpdate(prevProps, prevState) {
-        const host = 'http://dry-oasis-95076.herokuapp.com/api'
+        const host = 'https://dry-oasis-95076.herokuapp.com/api'
         if (prevState !== this.state.data) {
             axios.get(`${host}/data`)
                 .then(res => {

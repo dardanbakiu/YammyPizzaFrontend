@@ -323,7 +323,7 @@ class App extends Component {
 
         if ((this.state.fullname !== " ") && (this.state.location !== " ") && (this.state.totalPrice > 0)) {
             console.log("test here")
-            const host = 'http://dry-oasis-95076.herokuapp.com/api'
+            const host = 'https://dry-oasis-95076.herokuapp.com/api'
  
 
             fetch(`${host}/order`, {
