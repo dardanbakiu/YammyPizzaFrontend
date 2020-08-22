@@ -9,6 +9,7 @@ import { Button } from '@material-ui/core'
 import './style/App.css'
 import { borders } from '@material-ui/core'
 import Footer from './Footer'
+import axios from 'axios';
 
 class App extends Component {
 
@@ -289,23 +290,25 @@ class App extends Component {
     }
 
     onLocationChange = (e) => {
-        this.setState({
-            location: e.target.value
-        })
+        // this.setState({
+            
+        // })
 
         let today = new Date();
         let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
         let time = today.getHours() + ":" + today.getMinutes();
         let dateTime = date + ' ' + time;
+        // this.setState({
+            
+        // })
+
+
+        
+
+
         this.setState({
+            location: e.target.value,
             date: dateTime
-        })
-
-        let text = [...this.state.selectedPizza].toString()
-
-
-        this.setState({
-            products: text
         })
 
     }
@@ -313,27 +316,36 @@ class App extends Component {
 
     buyButtonHandle = () => {
 
-        // console.log("selected pizza : " + this.state.selectedPizza)
+        // let text = [...this.state.selectedPizza].join(',')
+        let pizzas = this.state.selectedPizza.join(',')
+      
+    
+        let name = this.state.fullname
+        let price = this.state.totalPrice
+        let location = this.state.location
+        let priceArr = this.state.selectedPizza
+
+        if ((name !== " ") && (location !== " ") && (price > 0) ) {
+        //     console.log("selected pizza : " + this.state.selectedPizza)
         // console.log('price : ' + this.state.totalPrice)
         // console.log("fullname:  " + this.state.fullname)
         // console.log("Location:  " + this.state.location)
         // console.log("time : " + this.state.date)
         // console.log(this.state.products)
-
-
-        if ((this.state.fullname !== " ") && (this.state.location !== " ") && (this.state.totalPrice > 0)) {
-            console.log("test here")
             const host = 'https://dry-oasis-95076.herokuapp.com/api'
- 
+
+            
+            let state = Object.assign({},this.state)
+            state.products = pizzas
 
             fetch(`${host}/order`, {
                 method: 'POST',
                 body: JSON.stringify(
-                   this.state
+                   state
                 ),
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accpet': 'application/json'
+                    'Accept': 'application/json'
                 }
             })
                 .then(response => response.json())
@@ -346,9 +358,10 @@ class App extends Component {
 
         else {
             alert('Fill the form please, and select a pizza!')
+            
         }
-    }
 
+    }
 
 
     render() {
@@ -384,7 +397,7 @@ class App extends Component {
 
                     <div className='threeCenter'>
                         <Product doesChecked={this.isChecked}
-                         price={8}
+                            price={8}
                             pizzaName={"Margherita"}
                             pizzaImg={'https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2017/10/shutterstock_347791016.jpg'}
                         />
@@ -463,8 +476,8 @@ class App extends Component {
             </div>
         )
     }
-
 }
+
 
 
 export default App;
